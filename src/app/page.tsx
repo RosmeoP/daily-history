@@ -9,10 +9,24 @@ import DatePicker from '@/components/DatePicker';
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [ephemerisData, setEphemerisData] = useState<DailyEphemeris | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   useEffect(() => {
     const data = getDailyEphemeris(selectedDate);
     setEphemerisData(data);
   }, [selectedDate]);
+
+  useEffect(() => {
+    const animatePosition = () => {
+      const time = Date.now() * 0.0005;
+      setMousePosition({
+        x: 50 + Math.sin(time) * 8 + Math.cos(time * 0.7) * 4,
+        y: 50 + Math.cos(time * 0.8) * 6 + Math.sin(time * 1.2) * 3,
+      });
+    };
+
+    const interval = setInterval(animatePosition, 100);
+    return () => clearInterval(interval);
+  }, []);
 
   if (!ephemerisData) {
     return (
@@ -46,7 +60,14 @@ export default function Home() {
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-gray-200/20 to-gray-400/20 dark:from-gray-600/30 dark:to-gray-700/30 rounded-full filter blur-3xl opacity-60"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-gray-300/15 to-gray-500/15 dark:from-gray-500/25 dark:to-gray-600/25 rounded-full filter blur-3xl opacity-50"></div>
         <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-br from-gray-100/15 to-gray-300/15 dark:from-gray-700/25 dark:to-gray-800/25 rounded-full filter blur-3xl opacity-40"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-gray-400/40 to-gray-600/40 dark:from-gray-400/60 dark:to-gray-500/60 rounded-full filter blur-2xl opacity-80"></div>
+        <div 
+          className="absolute w-96 h-96 bg-gradient-to-br from-gray-400/40 to-gray-600/40 dark:from-gray-400/60 dark:to-gray-500/60 rounded-full filter blur-2xl opacity-80 transition-all duration-300 ease-out"
+          style={{
+            left: `${mousePosition.x}%`,
+            top: `${mousePosition.y}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        ></div>
       </div>
 
       <div className="relative z-10 p-4 sm:p-8">
