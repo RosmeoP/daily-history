@@ -54,13 +54,13 @@ export default function TopicCard({ content }: TopicCardProps) {
   const sentences = content.content.split('. ').filter(sentence => sentence.trim());
 
   return (
-    <div className="group backdrop-blur-2xl bg-white/10 dark:bg-gray-950/40 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-12 hover:shadow-3xl hover:scale-105 transition-all duration-700 hover:bg-white/15 dark:hover:bg-gray-950/50">
+    <div className="backdrop-blur-2xl bg-white/10 dark:bg-gray-950/40 rounded-3xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-12">
       <div className="flex items-center gap-6 mb-10">
-        <div className={`text-5xl p-6 rounded-2xl bg-gradient-to-br ${topicColors[content.topic]} shadow-2xl group-hover:scale-110 transition-transform duration-500 backdrop-blur-lg`}>
+        <div className={`text-5xl p-6 rounded-2xl bg-gradient-to-br ${topicColors[content.topic]} shadow-xl backdrop-blur-lg`}>
           <span className="filter drop-shadow-lg text-white">{topicEmoji[content.topic]}</span>
         </div>
         <div className="flex-1">
-          <h3 className="text-3xl font-light text-black dark:text-white group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors duration-300 mb-4">
+          <h3 className="text-3xl font-light text-black dark:text-white mb-4">
             {content.title}
           </h3>
           <div className="flex items-center gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '500ms' }}>

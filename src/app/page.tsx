@@ -16,10 +16,19 @@ export default function Home() {
 
   if (!ephemerisData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-stone-50 via-neutral-50 to-zinc-100 dark:from-stone-900 dark:via-neutral-900 dark:to-zinc-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-stone-600 mx-auto mb-4"></div>
-          <p className="text-stone-600 dark:text-stone-300">Loading your daily learning content...</p>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-gray-950 dark:to-gray-900 relative overflow-hidden flex items-center justify-center">
+        {/* Blurred background overlay */}
+        <div className="absolute inset-0 backdrop-blur-sm bg-white/30 dark:bg-black/30"></div>
+        
+        <div className="relative z-10 text-center">
+          <div className="w-16 h-16 mx-auto mb-6">
+            <div className="animate-pulse">
+              <div className="w-4 h-4 bg-gray-400 dark:bg-gray-500 rounded-full mx-auto mb-2 opacity-75"></div>
+              <div className="w-6 h-6 bg-gray-500 dark:bg-gray-400 rounded-full mx-auto mb-2 opacity-50"></div>
+              <div className="w-8 h-8 bg-gray-600 dark:bg-gray-300 rounded-full mx-auto opacity-25"></div>
+            </div>
+          </div>
+          <p className="text-gray-700 dark:text-gray-300 font-light">Loading your daily learning content...</p>
         </div>
       </div>
     );
@@ -29,11 +38,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-gray-950 dark:to-gray-900 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Blurred background overlay */}
+      <div className="absolute inset-0 backdrop-blur-md bg-white/20 dark:bg-gray-800/20"></div>
+      
+      {/* Subtle animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-gray-200/20 to-gray-300/20 dark:from-gray-700/20 dark:to-gray-800/20 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-gray-300/15 to-gray-400/15 dark:from-gray-600/15 dark:to-gray-700/15 rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-br from-gray-100/20 to-gray-200/20 dark:from-gray-800/20 dark:to-gray-900/20 rounded-full filter blur-3xl animate-bounce"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-gray-200/20 to-gray-400/20 dark:from-gray-600/30 dark:to-gray-700/30 rounded-full filter blur-3xl opacity-60"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-gray-300/15 to-gray-500/15 dark:from-gray-500/25 dark:to-gray-600/25 rounded-full filter blur-3xl opacity-50"></div>
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-br from-gray-100/15 to-gray-300/15 dark:from-gray-700/25 dark:to-gray-800/25 rounded-full filter blur-3xl opacity-40"></div>
       </div>
 
       <div className="relative z-10 p-4 sm:p-8">

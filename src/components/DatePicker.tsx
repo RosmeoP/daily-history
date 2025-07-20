@@ -33,10 +33,10 @@ export default function DatePicker({ selectedDate, onDateChange }: DatePickerPro
     <div className="flex items-center justify-center gap-6 mb-8">
       <button
         onClick={goToPreviousDay}
-        className="group flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-white/20 dark:bg-gray-900/40 border border-gray-200/40 dark:border-gray-700/40 rounded-2xl hover:bg-white/30 dark:hover:bg-gray-900/50 hover:scale-105 transition-all duration-300 text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white shadow-lg"
+        className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-white/20 dark:bg-gray-900/40 border border-gray-200/40 dark:border-gray-700/40 rounded-2xl text-gray-700 dark:text-gray-200 shadow-lg"
         aria-label="Previous day"
       >
-        <span className="group-hover:-translate-x-1 transition-transform duration-300 text-lg">←</span>
+        <span className="text-lg">←</span>
         <span className="font-light">Previous</span>
       </button>
       
@@ -45,11 +45,11 @@ export default function DatePicker({ selectedDate, onDateChange }: DatePickerPro
           type="date"
           value={formatDate}
           onChange={handleDateChange}
-          className="px-6 py-4 backdrop-blur-xl bg-white/25 dark:bg-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 rounded-2xl text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/50 focus:border-transparent transition-all duration-300 hover:bg-white/35 dark:hover:bg-gray-900/60 shadow-lg text-center font-medium"
+          className="px-6 py-4 backdrop-blur-xl bg-white/25 dark:bg-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 rounded-2xl text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/50 focus:border-transparent shadow-lg text-center font-medium"
         />
         <button
           onClick={goToToday}
-          className="px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-800 text-white rounded-2xl hover:from-gray-700 hover:to-gray-900 hover:scale-105 transition-all duration-300 font-medium shadow-xl hover:shadow-2xl"
+          className="px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-800 text-white rounded-2xl font-medium shadow-xl"
         >
           Today
         </button>
@@ -57,11 +57,11 @@ export default function DatePicker({ selectedDate, onDateChange }: DatePickerPro
       
       <button
         onClick={goToNextDay}
-        className="group flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-white/20 dark:bg-gray-900/40 border border-gray-200/40 dark:border-gray-700/40 rounded-2xl hover:bg-white/30 dark:hover:bg-gray-900/50 hover:scale-105 transition-all duration-300 text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white shadow-lg"
+        className="flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-white/20 dark:bg-gray-900/40 border border-gray-200/40 dark:border-gray-700/40 rounded-2xl text-gray-700 dark:text-gray-200 shadow-lg"
         aria-label="Next day"
       >
         <span className="font-light">Next</span>
-        <span className="group-hover:translate-x-1 transition-transform duration-300 text-lg">→</span>
+        <span className="text-lg">→</span>
       </button>
     </div>
   );
