@@ -17,14 +17,14 @@ export default function Home() {
 
   useEffect(() => {
     const animatePosition = () => {
-      const time = Date.now() * 0.0005;
+      const time = Date.now() * 0.0003;
       setMousePosition({
-        x: 50 + Math.sin(time) * 8 + Math.cos(time * 0.7) * 4,
-        y: 50 + Math.cos(time * 0.8) * 6 + Math.sin(time * 1.2) * 3,
+        x: 50 + Math.sin(time) * 3,
+        y: 50 + Math.cos(time) * 2,
       });
     };
 
-    const interval = setInterval(animatePosition, 100);
+    const interval = setInterval(animatePosition, 150);
     return () => clearInterval(interval);
   }, []);
 
@@ -112,9 +112,51 @@ export default function Home() {
           {/* Footer */}
           <footer className="text-center animate-fade-in-up animation-delay-900">
             <div className="backdrop-blur-lg bg-white/20 dark:bg-gray-900/40 rounded-3xl shadow-lg border border-gray-200/40 dark:border-gray-700/40 p-8">
-              <p className="text-base text-gray-700 dark:text-gray-200 mb-3">
+              <p className="text-base text-gray-700 dark:text-gray-200 mb-6">
                 ✨ One daily learning experience • Curated educational content
               </p>
+              <div className="flex justify-center items-center gap-6 mb-4">
+                <a 
+                  href="https://rmauricio-dev.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-300 text-sm font-medium"
+                >
+                  Portfolio
+                </a>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-300 text-sm"
+                >
+                  Instagram
+                </a>
+                <a 
+                  href="https://twitter.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-300 text-sm"
+                >
+                  Twitter
+                </a>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-300 text-sm"
+                >
+                  LinkedIn
+                </a>
+                <a 
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-300 text-sm"
+                >
+                  GitHub
+                </a>
+              </div>
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 Frontend-only • Navigate dates for new topics • Expand your knowledge daily
               </p>
