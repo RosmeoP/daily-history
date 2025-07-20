@@ -33,23 +33,23 @@ export default function DatePicker({ selectedDate, onDateChange }: DatePickerPro
     <div className="flex items-center justify-center gap-6 mb-8">
       <button
         onClick={goToPreviousDay}
-        className="group flex items-center gap-2 px-6 py-3 backdrop-blur-sm bg-white/15 dark:bg-stone-800/15 border border-white/20 dark:border-stone-600/20 rounded-2xl hover:bg-white/25 dark:hover:bg-stone-800/25 hover:scale-105 transition-all duration-300 text-stone-700 dark:text-stone-200 hover:text-stone-800 dark:hover:text-white"
+        className="group flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-white/10 dark:bg-violet-900/20 border border-violet-200/30 dark:border-violet-700/30 rounded-2xl hover:bg-white/20 dark:hover:bg-violet-900/30 hover:scale-105 transition-all duration-300 text-violet-700 dark:text-violet-200 hover:text-violet-800 dark:hover:text-white shadow-lg"
         aria-label="Previous day"
       >
-        <span className="group-hover:-translate-x-1 transition-transform duration-300">←</span>
+        <span className="group-hover:-translate-x-1 transition-transform duration-300 text-lg">←</span>
         <span className="font-light">Previous</span>
       </button>
       
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-6">
         <input
           type="date"
           value={formatDate}
           onChange={handleDateChange}
-          className="px-4 py-3 backdrop-blur-sm bg-white/20 dark:bg-stone-800/20 border border-white/30 dark:border-stone-600/30 rounded-2xl text-stone-800 dark:text-stone-100 placeholder-stone-500 dark:placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-400/30 focus:border-transparent transition-all duration-300 hover:bg-white/30 dark:hover:bg-stone-800/30"
+          className="px-6 py-4 backdrop-blur-xl bg-white/15 dark:bg-violet-900/25 border border-violet-200/40 dark:border-violet-700/40 rounded-2xl text-violet-800 dark:text-violet-100 placeholder-violet-500 dark:placeholder-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-400/50 focus:border-transparent transition-all duration-300 hover:bg-white/25 dark:hover:bg-violet-900/35 shadow-lg text-center font-medium"
         />
         <button
           onClick={goToToday}
-          className="px-6 py-3 bg-gradient-to-r from-stone-500 to-zinc-600 text-white rounded-2xl hover:from-stone-600 hover:to-zinc-700 hover:scale-105 transition-all duration-300 font-light shadow-md hover:shadow-lg"
+          className="px-8 py-4 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-2xl hover:from-violet-600 hover:to-purple-700 hover:scale-105 transition-all duration-300 font-medium shadow-xl hover:shadow-2xl"
         >
           Today
         </button>
@@ -57,11 +57,11 @@ export default function DatePicker({ selectedDate, onDateChange }: DatePickerPro
       
       <button
         onClick={goToNextDay}
-        className="group flex items-center gap-2 px-6 py-3 backdrop-blur-sm bg-white/15 dark:bg-stone-800/15 border border-white/20 dark:border-stone-600/20 rounded-2xl hover:bg-white/25 dark:hover:bg-stone-800/25 hover:scale-105 transition-all duration-300 text-stone-700 dark:text-stone-200 hover:text-stone-800 dark:hover:text-white"
+        className="group flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-white/10 dark:bg-violet-900/20 border border-violet-200/30 dark:border-violet-700/30 rounded-2xl hover:bg-white/20 dark:hover:bg-violet-900/30 hover:scale-105 transition-all duration-300 text-violet-700 dark:text-violet-200 hover:text-violet-800 dark:hover:text-white shadow-lg"
         aria-label="Next day"
       >
         <span className="font-light">Next</span>
-        <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+        <span className="group-hover:translate-x-1 transition-transform duration-300 text-lg">→</span>
       </button>
     </div>
   );

@@ -7,17 +7,20 @@ interface TypewriterTextProps {
   delay?: number;
   speed?: number;
   className?: string;
+  onComplete?: () => void;
 }
 
-export default function TypewriterText({ text, delay = 0, speed = 30, className = '' }: TypewriterTextProps) {
+export default function TypewriterText({ text, delay = 0, speed = 30, className = '', onComplete }: TypewriterTextProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [started, setStarted] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     setDisplayedText('');
     setCurrentIndex(0);
     setStarted(false);
+    setIsComplete(false);
     
     const startTimer = setTimeout(() => {
       setStarted(true);
@@ -27,7 +30,13 @@ export default function TypewriterText({ text, delay = 0, speed = 30, className 
   }, [text, delay]);
 
   useEffect(() => {
-    if (!started || currentIndex >= text.length) return;
+    if (!started || currentIndex >= text.length) {
+      if (currentIndex >= text.length && !isComplete) {
+        setIsComplete(true);
+        onComplete?.();
+      }
+      return;
+    }
 
     const timer = setTimeout(() => {
       setDisplayedText(text.slice(0, currentIndex + 1));
@@ -35,13 +44,13 @@ export default function TypewriterText({ text, delay = 0, speed = 30, className 
     }, speed);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, text, speed, started]);
+  }, [currentIndex, text, speed, started, isComplete, onComplete]);
 
   return (
     <span className={className}>
       {displayedText}
       {started && currentIndex < text.length && (
-        <span className="animate-pulse">|</span>
+        <span className="animate-pulse text-violet-400">|</span>
       )}
     </span>
   );

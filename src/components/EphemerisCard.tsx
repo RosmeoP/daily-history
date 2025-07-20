@@ -1,7 +1,7 @@
 'use client';
 
 import { DailyTopicContent } from '@/types/ephemeris';
-import TypewriterText from './TypewriterText';
+import SequentialTypewriter from './SequentialTypewriter';
 
 interface TopicCardProps {
   content: DailyTopicContent;
@@ -18,88 +18,82 @@ export default function TopicCard({ content }: TopicCardProps) {
   };
 
   const topicColors: { [key: string]: string } = {
-    science: 'from-blue-200 to-cyan-200',
-    history: 'from-amber-200 to-orange-200',
-    technology: 'from-purple-200 to-indigo-200',
-    nature: 'from-green-200 to-emerald-200',
-    culture: 'from-pink-200 to-rose-200'
+    science: 'from-blue-400 to-cyan-500',
+    history: 'from-amber-400 to-orange-500',
+    technology: 'from-purple-400 to-indigo-500',
+    nature: 'from-green-400 to-emerald-500',
+    culture: 'from-pink-400 to-rose-500'
   };
 
   const difficultyColors: { [key: string]: string } = {
-    beginner: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-    intermediate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-    advanced: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+    beginner: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300',
+    intermediate: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300',
+    advanced: 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300'
   };
 
   if (content.title === 'Loading...') {
     return (
-      <div className="group backdrop-blur-lg bg-white/10 dark:bg-stone-800/10 rounded-3xl shadow-xl border border-white/20 dark:border-stone-600/20 p-8 animate-pulse">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-16 h-16 bg-stone-200 dark:bg-stone-700 rounded-full"></div>
+      <div className="group backdrop-blur-2xl bg-white/5 dark:bg-violet-950/20 rounded-3xl shadow-2xl border border-violet-200/30 dark:border-violet-700/30 p-12 animate-pulse">
+        <div className="flex items-center gap-6 mb-8">
+          <div className="w-20 h-20 bg-violet-200 dark:bg-violet-700 rounded-full"></div>
           <div className="flex-1">
-            <div className="h-6 bg-stone-200 dark:bg-stone-700 rounded mb-2"></div>
-            <div className="h-4 bg-stone-200 dark:bg-stone-700 rounded w-3/4"></div>
+            <div className="h-8 bg-violet-200 dark:bg-violet-700 rounded mb-3"></div>
+            <div className="h-5 bg-violet-200 dark:bg-violet-700 rounded w-3/4"></div>
           </div>
         </div>
-        <div className="space-y-3">
-          <div className="h-4 bg-stone-200 dark:bg-stone-700 rounded"></div>
-          <div className="h-4 bg-stone-200 dark:bg-stone-700 rounded"></div>
-          <div className="h-4 bg-stone-200 dark:bg-stone-700 rounded w-2/3"></div>
+        <div className="space-y-4">
+          <div className="h-5 bg-violet-200 dark:bg-violet-700 rounded"></div>
+          <div className="h-5 bg-violet-200 dark:bg-violet-700 rounded"></div>
+          <div className="h-5 bg-violet-200 dark:bg-violet-700 rounded w-2/3"></div>
         </div>
       </div>
     );
   }
 
-  // Split content into sentences for staggered animation
+  // Split content into sentences for sequential animation
   const sentences = content.content.split('. ').filter(sentence => sentence.trim());
 
   return (
-    <div className="group backdrop-blur-lg bg-white/10 dark:bg-stone-800/10 rounded-3xl shadow-xl border border-white/20 dark:border-stone-600/20 p-8 hover:shadow-2xl hover:scale-105 transition-all duration-500 hover:bg-white/15 dark:hover:bg-stone-800/15">
-      <div className="flex items-center gap-4 mb-6">
-        <div className={`text-4xl p-4 rounded-full bg-gradient-to-br ${topicColors[content.topic]} shadow-xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm`}>
-          <span className="filter drop-shadow-sm">{topicEmoji[content.topic]}</span>
+    <div className="group backdrop-blur-2xl bg-white/5 dark:bg-violet-950/20 rounded-3xl shadow-2xl border border-violet-200/30 dark:border-violet-700/30 p-12 hover:shadow-3xl hover:scale-105 transition-all duration-700 hover:bg-white/10 dark:hover:bg-violet-950/30">
+      <div className="flex items-center gap-6 mb-10">
+        <div className={`text-5xl p-6 rounded-2xl bg-gradient-to-br ${topicColors[content.topic]} shadow-2xl group-hover:scale-110 transition-transform duration-500 backdrop-blur-lg`}>
+          <span className="filter drop-shadow-lg text-white">{topicEmoji[content.topic]}</span>
         </div>
         <div className="flex-1">
-          <h3 className="text-2xl font-medium text-stone-800 dark:text-stone-100 group-hover:text-stone-900 dark:group-hover:text-white transition-colors duration-300 mb-3">
+          <h3 className="text-3xl font-light text-violet-900 dark:text-violet-100 group-hover:text-violet-800 dark:group-hover:text-white transition-colors duration-300 mb-4">
             {content.title}
           </h3>
-          <div className="flex items-center gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
-            <span className={`px-3 py-1 rounded-full text-sm font-medium ${difficultyColors[content.difficulty]} backdrop-blur-sm`}>
+          <div className="flex items-center gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+            <span className={`px-4 py-2 rounded-full text-sm font-medium ${difficultyColors[content.difficulty]} backdrop-blur-lg`}>
               {content.difficulty}
             </span>
-            <span className="text-sm text-stone-500 dark:text-stone-400">
+            <span className="text-sm text-violet-600 dark:text-violet-300">
               {content.readingTime} min read
             </span>
           </div>
         </div>
       </div>
       
-      <div className="space-y-6">
-        <div className="text-base text-stone-700 dark:text-stone-200 leading-relaxed space-y-3">
-          {sentences.map((sentence, sentenceIndex) => (
-            <div key={sentenceIndex}>
-              <TypewriterText
-                text={sentence + (sentenceIndex < sentences.length - 1 ? '. ' : '')}
-                delay={1000 + sentenceIndex * 1000}
-                speed={30}
-                className="block"
-              />
-            </div>
-          ))}
+      <div className="space-y-8">
+        <div className="text-lg text-violet-800 dark:text-violet-200 leading-relaxed">
+          <SequentialTypewriter
+            sentences={sentences}
+            delay={1000}
+            speed={25}
+          />
         </div>
         
         {content.keyPoints.length > 0 && (
-          <div className="space-y-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '4000ms' }}>
-            <h4 className="text-lg font-medium text-stone-800 dark:text-stone-100">Key Points:</h4>
-            <ul className="space-y-3">
+          <div className="space-y-5 opacity-0 animate-fade-in-up" style={{ animationDelay: '8000ms' }}>
+            <h4 className="text-xl font-medium text-violet-900 dark:text-violet-100 flex items-center gap-3">
+              <span className="w-2 h-2 bg-violet-500 rounded-full"></span>
+              Key Insights
+            </h4>
+            <ul className="space-y-4 ml-6">
               {content.keyPoints.map((point, pointIndex) => (
-                <li key={pointIndex} className="text-sm text-stone-600 dark:text-stone-300 flex items-center gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: `${4500 + pointIndex * 500}ms` }}>
-                  <span className="w-2 h-2 bg-gradient-to-r from-stone-400 to-stone-500 rounded-full flex-shrink-0"></span>
-                  <TypewriterText
-                    text={point}
-                    delay={4500 + pointIndex * 500}
-                    speed={25}
-                  />
+                <li key={pointIndex} className="text-base text-violet-700 dark:text-violet-200 flex items-start gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: `${8500 + pointIndex * 600}ms` }}>
+                  <span className="w-3 h-3 bg-gradient-to-r from-violet-400 to-purple-500 rounded-full flex-shrink-0 mt-1.5"></span>
+                  <span>{point}</span>
                 </li>
               ))}
             </ul>
@@ -107,17 +101,14 @@ export default function TopicCard({ content }: TopicCardProps) {
         )}
         
         {content.funFact && (
-          <div className="p-6 rounded-2xl bg-white/20 dark:bg-stone-700/20 backdrop-blur-md border border-white/30 dark:border-stone-600/30 opacity-0 animate-fade-in-up" style={{ animationDelay: '6500ms' }}>
-            <h4 className="text-lg font-medium text-stone-800 dark:text-stone-100 mb-3 flex items-center gap-2">
-              <span className="text-xl">💡</span>
-              Fun Fact
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-violet-100/30 to-purple-100/30 dark:from-violet-900/30 dark:to-purple-900/30 backdrop-blur-xl border border-violet-300/40 dark:border-violet-600/40 opacity-0 animate-fade-in-up" style={{ animationDelay: '12000ms' }}>
+            <h4 className="text-xl font-medium text-violet-900 dark:text-violet-100 mb-4 flex items-center gap-3">
+              <span className="text-2xl">💡</span>
+              Did You Know?
             </h4>
-            <TypewriterText
-              text={content.funFact}
-              delay={7000}
-              speed={35}
-              className="text-sm text-stone-600 dark:text-stone-300"
-            />
+            <p className="text-base text-violet-700 dark:text-violet-200 leading-relaxed">
+              {content.funFact}
+            </p>
           </div>
         )}
       </div>
